@@ -1,0 +1,8 @@
+version: '3'
+services:
+    cithara-docker:
+        build: .
+        ports:
+            - 8080:8080
+        volumes:
+            - /Users/adriannamusialik/Desktop/Cithara/Cithara/:/Cithara
