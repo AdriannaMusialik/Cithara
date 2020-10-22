@@ -9,14 +9,7 @@ cache:
     paths:
       - ./node_modules/
 
-install:
-    stage: deploy
-    tags:
-        - docker
-    script:
-        - npm install
-
-build:ios:
+build:
     stage: build
     tags:
         - ios
@@ -35,7 +28,7 @@ build:ios:
         - ./node_modules/
         - ./ios/Pods/
     
-deploy:ios:
+deploy:
     stage: deploy
     dependencies:
         - build:ios
