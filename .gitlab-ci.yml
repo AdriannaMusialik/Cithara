@@ -10,7 +10,7 @@ cache:
     paths:
         - ./node_modules/
 
-build:ios:
+build:
     stage: build
     before_script:
         - ./dev-start.sh
@@ -26,7 +26,7 @@ build:ios:
         - ./node_modules/
         - ./ios/Pods/
 
-deploy:ios:
+deploy:
     stage: deploy
     dependencies:
         - build:ios
