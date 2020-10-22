@@ -12,8 +12,6 @@ cache:
 
 build:
     stage: build
-    before_script:
-        - ./dev-start.sh
     script:
         - npm install
         - ./scripts/build.sh
