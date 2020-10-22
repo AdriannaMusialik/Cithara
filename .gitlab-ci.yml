@@ -11,10 +11,6 @@ cache:
 
 build:
     stage: build
-    tags:
-        - ios
-        - node
-        - react-native
     before_script:
         - ./dev-start.sh
     script:
@@ -32,8 +28,6 @@ deploy:
     stage: deploy
     dependencies:
         - build
-    tags:
-        - docker
     image: emiketic/essentials
     variables:
         APPETIZE_PLATFORM: ios
