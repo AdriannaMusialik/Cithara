@@ -13,8 +13,7 @@ before_script:
 pages:
   stage: deploy
   script:
-    - npm run build
-    - rm -rf public
+    - npm run start
   artifacts:
     paths:
       - public
