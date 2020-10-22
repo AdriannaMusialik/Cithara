@@ -2,8 +2,6 @@
 image: node:12.18.4
 
 stages:
-    - prepare
-    - test
     - build
     - deploy
   
@@ -12,74 +10,12 @@ cache:
     paths:
         - ./node_modules/
 
-install:
-    stage: prepare
-    tags:
-        - docker
-    script:
-        - yarn install
-
-lint:
-    stage: test
-    tags:
-        - docker
-    before_script:
-        - ./dev-start.sh
-    script:
-        - yarn run lint
-
-test:
-    stage: test
-    tags:
-        - docker
-    before_script:
-        - ./dev-start.sh
-    script:
-        - yarn run test
-    allow_failure: true
-
-build:android:debug:
+build:ios:
     stage: build
-    tags:
-        - android
-        - node
-        - react-native
     before_script:
         - ./dev-start.sh
     script:
-        - ./scripts/build-android-debug.sh
-    artifacts:
-        paths:
-        - ./build/app-debug.apk
-    cache:
-        key: ${CI_COMMIT_REF_SLUG}-android-ios
-        paths:
-        - ./node_modules/
-        - ./android/.gradle/
-
-deploy:android:debug:
-    stage: deploy
-    dependencies:
-        - build:android:debug
-    cache: {}
-    tags:
-        - docker
-    image: emiketic/essentials
-    variables:
-        APPETIZE_PLATFORM: android
-        APPETIZE_ID: $APPETIZE_ANDROID_ID
-    script:
-        - ./scripts/deploy.sh ./build/app-debug.apk
-
-build:ios:debug:
-    stage: build
-    tags:
-        - ios
-        - node
-        - react-native
-    before_script:
-        - ./dev-start.sh
-    script:
+        - npm install
         - ./scripts/build-ios-debug.sh
     artifacts:
         paths:
@@ -90,13 +26,11 @@ build:ios:debug:
         - ./node_modules/
         - ./ios/Pods/
 
-deploy:ios:debug:
+deploy:ios:
     stage: deploy
     dependencies:
-        - build:ios:debug
+        - build:ios
     cache: {}
-    tags:
-        - docker
     image: emiketic/essentials
     variables:
         APPETIZE_PLATFORM: ios
