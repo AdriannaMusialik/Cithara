@@ -21,7 +21,7 @@ build:
         paths:
         - ./build/app-.zip
     cache:
-        key: ${CI_COMMIT_REF_SLUG}-ios
+        key: ${CI_COMMIT_REF_SLUG}
         paths:
         - ./node_modules/
         - ./ios/Pods/
@@ -32,8 +32,5 @@ deploy:
         - build
     cache: {}
     image: emiketic/essentials
-    variables:
-        APPETIZE_PLATFORM: ios
-        APPETIZE_ID: $APPETIZE_IOS_ID
     script:
-        - ./scripts/deploy.sh ./build/app-debug.zip
+        - ./scripts/deploy.sh ./build/app.zip
