@@ -1,36 +1,24 @@
 image: node:8
 
-stages:
-    - build
-    - deploy
+image: node:12.18.4
 
 cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - ./node_modules/
+  paths:
+    - node_modules/
 
-build:
-    stage: build
-    before_script:
-        - ./dev-start.sh
-    script:
-        - ./scripts/build.sh
-    artifacts:
-        paths:
-        - ./build/app.zip
-    cache:
-        key: ${CI_COMMIT_REF_SLUG}-ios
-        paths:
-        - ./node_modules/
-        - ./ios/Pods/
-    
-deploy:
-    stage: deploy
-    dependencies:
-        - build
-    image: emiketic/essentials
-    variables:
-        APPETIZE_PLATFORM: ios
-        APPETIZE_ID: $APPETIZE_IOS_ID
-    script:
-        - ./scripts/deploy.sh ./build/app.zip
+before_script:
+  - rm -rf build
+  - CI=false npm install
+
+pages:
+  stage: deploy
+  script:
+    - CI=false npm run build
+    - rm -rf public
+    - cp build/index.html build/404.html
+    - mv build public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
