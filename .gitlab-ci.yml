@@ -64,8 +64,6 @@ stages:
     dependencies:
       - build:android:debug
     cache: {}
-    # only:
-    #   - develop
     tags:
       - docker
     image: emiketic/essentials
@@ -74,23 +72,6 @@ stages:
       APPETIZE_ID: $APPETIZE_ANDROID_ID
     script:
       - ./scripts/deploy.sh ./build/app-debug.apk
-  
-  # android:release:build:
-  #   stage: build
-  #   only:
-  #     - master
-  #   tags:
-  #     - android
-  #     - node
-  #     - react-native
-  #   before_script:
-  #     - ./dev-start.sh
-  #   script:
-  #     - ./scripts/build-android-release.sh
-  #     - ./scripts/deploy.sh ./build/app-release.apk
-  #   artifacts:
-  #     paths:
-  #       - ./build/app-release.apk
   
   build:ios:debug:
     stage: build
@@ -116,8 +97,6 @@ stages:
     dependencies:
       - build:ios:debug
     cache: {}
-    # only:
-    #   - develop
     tags:
       - docker
     image: emiketic/essentials
@@ -126,19 +105,3 @@ stages:
       APPETIZE_ID: $APPETIZE_IOS_ID
     script:
       - ./scripts/deploy.sh ./build/app-debug.zip
-  # build:ios:release:
-  #   stage: build
-  #   only:
-  #     - master
-  #   tags:
-  #     - ios
-  #     - node
-  #     - react-native
-  #   before_script:
-  #     - ./dev-start.sh
-  #   script:
-  #     - ./scripts/build-ios-release.sh
-  #     - ./scripts/deploy.sh ./build/app-release.zip
-  #   artifacts:
-  #     paths:
-  #       - ./build/app-release.zip
