@@ -2,17 +2,57 @@ image: node:8
 
 stages:
     - build
-    - test
     - deploy
 
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - ./node_modules/
 
-variables:
-  DOCKER_DRIVER: overlay2
+install:
+    stage: prepare
+    tags:
+        - docker
+    script:
+        - npm install
 
-before_script:
-  - npm generate-dotenv
-  - npm
+lint:
+    stage: test
+    tags:
+        - docker
+    before_script:
+        - ./dev-start.sh
+    script:
+        - npm run lint
+
+    build:ios:debug:
+        stage: build
+        tags:
+            - ios
+            - node
+            - react-native
+        before_script:
+            - ./dev-start.sh
+        script:
+            - ./scripts/build-ios-debug.sh
+        artifacts:
+            paths:
+            - ./build/app-debug.zip
+        cache:
+            key: ${CI_COMMIT_REF_SLUG}-ios
+            paths:
+            - ./node_modules/
+            - ./ios/Pods/
+        
+    deploy:ios:debug:
+        stage: deploy
+        dependencies:
+            - build:ios:debug
+        tags:
+            - docker
+        image: emiketic/essentials
+        variables:
+            APPETIZE_PLATFORM: ios
+            APPETIZE_ID: $APPETIZE_IOS_ID
+        script:
+            - ./scripts/deploy.sh ./build/app-debug.zip
