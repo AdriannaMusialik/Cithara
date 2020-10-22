@@ -16,10 +16,10 @@ build:
         - ./dev-start.sh
     script:
         - npm install
-        - ./scripts/build-ios-debug.sh
+        - ./scripts/build.sh
     artifacts:
         paths:
-        - ./build/app-debug.zip
+        - ./build/app-.zip
     cache:
         key: ${CI_COMMIT_REF_SLUG}-ios
         paths:
@@ -29,7 +29,7 @@ build:
 deploy:
     stage: deploy
     dependencies:
-        - build:ios
+        - build
     cache: {}
     image: emiketic/essentials
     variables:
