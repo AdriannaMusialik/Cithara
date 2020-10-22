@@ -25,7 +25,7 @@ lint:
     script:
         - npm run lint
 
-    build:ios:debug:
+    build:ios:
         stage: build
         tags:
             - ios
@@ -34,20 +34,20 @@ lint:
         before_script:
             - ./dev-start.sh
         script:
-            - ./scripts/build-ios-debug.sh
+            - ./scripts/build-ios.sh
         artifacts:
             paths:
-            - ./build/app-debug.zip
+            - ./build/app.zip
         cache:
             key: ${CI_COMMIT_REF_SLUG}-ios
             paths:
             - ./node_modules/
             - ./ios/Pods/
         
-    deploy:ios:debug:
+    deploy:ios:
         stage: deploy
         dependencies:
-            - build:ios:debug
+            - build:ios
         tags:
             - docker
         image: emiketic/essentials
@@ -55,4 +55,4 @@ lint:
             APPETIZE_PLATFORM: ios
             APPETIZE_ID: $APPETIZE_IOS_ID
         script:
-            - ./scripts/deploy.sh ./build/app-debug.zip
+            - ./scripts/deploy.sh ./build/app.zip
