@@ -10,20 +10,11 @@ cache:
       - ./node_modules/
 
 install:
-    stage: prepare
+    stage: deploy
     tags:
         - docker
     script:
         - npm install
-
-lint:
-    stage: test
-    tags:
-        - docker
-    before_script:
-        - ./dev-start.sh
-    script:
-        - npm run lint
 
 build:ios:
     stage: build
