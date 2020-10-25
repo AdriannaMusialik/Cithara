@@ -5,15 +5,6 @@ stages:
     - build
     - deploy
   
-cache: 
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-      - public/
-      - vendor/
-    policy: pull-push
-    
-
 build:
     stage: build
     script:
@@ -32,7 +23,10 @@ deploy:
     stage: deploy
     dependencies:
         - build
-    cache: {}
+    cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+            - node_modules/
     image: emiketic/essentials
     script:
         - ./scripts/deploy.sh ./build/app.zip
