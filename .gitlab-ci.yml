@@ -5,10 +5,13 @@ stages:
     - build
     - deploy
   
-cache:
-    key: "$CI_COMMIT_REF_SLUG"
+    cache: &global_cache
+    key: ${CI_COMMIT_REF_SLUG}
     paths:
-        - binaries/
+      - node_modules/
+      - public/
+      - vendor/
+    policy: pull-push
     
 
 build:
@@ -18,12 +21,12 @@ build:
         - ./scripts/build.sh
     artifacts:
         paths:
-        - ./build/app-.zip
+            - ./build/app-.zip
     cache:
-        key: "$CI_COMMIT_REF_SLUG"
+        key: ${CI_COMMIT_REF_SLUG}
         paths:
-        - binaries/
-        - ./ios/Pods/
+            - node_modules/
+            - ./ios/Pods/
 
 deploy:
     stage: deploy
