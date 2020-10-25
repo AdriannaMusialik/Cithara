@@ -6,10 +6,10 @@ stages:
     - deploy
   
 cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key: "$CI_COMMIT_REF_SLUG"
     paths:
-        - ./node_modules/
-        -.npm/
+        - binaries/
+    
 
 build:
     stage: build
@@ -20,9 +20,9 @@ build:
         paths:
         - ./build/app-.zip
     cache:
-        key: ${CI_COMMIT_REF_SLUG}
+        key: "$CI_COMMIT_REF_SLUG"
         paths:
-        - ./node_modules/
+        - binaries/
         - ./ios/Pods/
 
 deploy:
