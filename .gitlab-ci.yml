@@ -10,9 +10,10 @@ stages:
   
 build:
     stage: build
+    only:
+        - build
     script:
         - npm install
-        - docker restart gitlab-runner
         - ./scripts/build.sh
 
     artifacts:
@@ -21,6 +22,8 @@ build:
 
 deploy:
     stage: deploy
+    only: 
+        - deploy
     cache:
         key: ${CI_COMMIT_REF_SLUG}
         paths:
