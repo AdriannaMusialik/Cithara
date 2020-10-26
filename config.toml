@@ -1,10 +1,10 @@
 concurrent = 4
 
 [[runners]]
-  name = "shell"
+  name = "docker"
   url = "https://CI/"
   token = "TOKEN"
   limit = 2
-  executor = "shell"
+  executor = "docker"
   builds_dir = ""
   shell = "bash"
