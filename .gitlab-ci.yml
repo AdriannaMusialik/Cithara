@@ -22,5 +22,6 @@ deploy:
     only: 
         - deploy
     script:
-        - install docker-compose
+        - sudo apt-get install -y python-pip
+        - pip install docker-compose
         - docker-compose up -d --build
