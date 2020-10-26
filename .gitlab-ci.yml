@@ -16,18 +16,9 @@ build:
         - npm install
         - docker-compose up -d --build
 
-    artifacts:
-        paths:
-            - ./build/app-.zip
-
 deploy:
     stage: deploy
     only: 
         - deploy
-    cache:
-        key: ${CI_COMMIT_REF_SLUG}
-        paths:
-            - node_modules/
-    image: emiketic/essentials
     script:
         - docker-compose up -d --build
