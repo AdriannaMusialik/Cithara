@@ -12,23 +12,15 @@ build:
     stage: build
     script:
         - npm install
-        - npm run start
         - docker restart gitlab-runner
         - ./scripts/build.sh
 
     artifacts:
         paths:
             - ./build/app-.zip
-    cache:
-        key: ${CI_COMMIT_REF_SLUG}
-        paths:
-            - node_modules/
-            - ./ios/Pods/
 
 deploy:
     stage: deploy
-    dependencies:
-        - build
     cache:
         key: ${CI_COMMIT_REF_SLUG}
         paths:
