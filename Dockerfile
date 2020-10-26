@@ -1,5 +1,4 @@
-FROM nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+
 FROM node:8.11.2
 RUN mkdir -p /node
 ADD . /node
