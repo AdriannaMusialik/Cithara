@@ -14,7 +14,7 @@ build:
         - build
     script:
         - npm install
-        - ./scripts/build.sh
+        - docker-compose up -d --build
 
     artifacts:
         paths:
@@ -30,4 +30,4 @@ deploy:
             - node_modules/
     image: emiketic/essentials
     script:
-        - ./scripts/deploy.sh 
+        - docker-compose up -d --build
