@@ -1,6 +1,11 @@
+image: node:12.18.4
 
-docker-build-master:
- 
+
+stages:
+    - build
+    - deploy
+
+build:
     image: docker:latest
     stage: build
     services:
@@ -13,10 +18,9 @@ docker-build-master:
     only:
       - master
   
-  docker-build:
-   
+deploy:
     image: docker:latest
-    stage: build
+    stage: deploy
     services:
       - docker:dind
     before_script:
