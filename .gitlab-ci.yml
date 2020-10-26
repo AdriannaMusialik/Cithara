@@ -14,6 +14,7 @@ build:
         - build
     script:
         - npm install
+        - install docker-compose
         - docker-compose up -d --build
 
 deploy:
@@ -21,4 +22,5 @@ deploy:
     only: 
         - deploy
     script:
+        - install docker-compose
         - docker-compose up -d --build
