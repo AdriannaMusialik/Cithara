@@ -14,9 +14,7 @@ build:
     script:
       - docker build --pull -t "$CI_REGISTRY_IMAGE" .
       - docker push "$CI_REGISTRY_IMAGE"
-      - npm install hexo-cli -g
-      - npm install
-      - hexo deploy 
+      - echo "Building the app"
     artifacts:
         paths:
         - public
@@ -33,9 +31,10 @@ deploy:
     script:
       - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
       - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
-      - npm install hexo-cli -g
-      - npm install
-      - hexo deploy 
+      - echo "Deploy to deploy server"
+    environment:
+        name: deploy
+        url: https://staging.example.com
     artifacts:
         paths:
         - public
