@@ -34,7 +34,7 @@ deploy:
       - echo "Deploy to deploy server"
     environment:
         name: deploy
-        url: https://staging.example.com
+        url: https://cithara.online
     artifacts:
         paths:
         - public
