@@ -1,4 +1,4 @@
-image: node:12.18.4  
+image: ruby:2.7
 
 stages:
     - build
@@ -12,10 +12,9 @@ build:
     before_script:
       - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     script:
-      - docker build --pull -t "$CI_REGISTRY_IMAGE" .
-      - docker push "$CI_REGISTRY_IMAGE"
-      - rm /usr/home/login/domains/domena/public_nodejs/public/index.html
-      - echo "Building the app"
+        - gem install bundler
+        - bundle install
+        - bundle exec jekyll build -d build
     artifacts:
         paths:
         - public
@@ -30,13 +29,9 @@ deploy:
     before_script:
       - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     script:
-      - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
-      - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
-      - rm /usr/home/login/domains/domena/public_nodejs/public/index.html
-      - echo "Deploy to deploy server"
-    environment:
-        name: deploy
-        url: https://cithara.online
+        - gem install bundler
+        - bundle install
+        - bundle exec jekyll build -d deploy
     artifacts:
         paths:
         - public
