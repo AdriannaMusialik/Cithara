@@ -1,4 +1,4 @@
-image: ruby:2.7
+image: node:12.18.4
 
 workflow:
     rules:
@@ -13,10 +13,11 @@ build:
     stage: build
     services:
       - docker:dind
-    script:
-        - gem install bundler
-        - bundle install
-        - bundle exec jekyll build -d build
+    sscript:
+        - npm install
+        - npm run build
+        - rm -rf public
+        - mv build public
     artifacts:
         paths:
         - public
@@ -27,14 +28,12 @@ deploy:
     image: docker:latest
     stage: deploy
     services:
-      - docker:dind
+        - docker:dind
     script:
-        - gem install bundler
-        - bundle install
-        - bundle exec jekyll build -d deploy
+        - npm install
+        - npm run build
+        - rm -rf public
+        - mv build public
     artifacts:
         paths:
-        - public
-    except:
-      - master
-  
+        - public 
