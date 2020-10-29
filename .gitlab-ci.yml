@@ -13,7 +13,7 @@ build:
     stage: build
     services:
       - docker:dind
-    sscript:
+    script:
         - npm install
         - npm run build
         - rm -rf public
