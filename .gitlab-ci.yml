@@ -15,9 +15,6 @@ build:
       - docker build --pull -t "$CI_REGISTRY_IMAGE" .
       - docker push "$CI_REGISTRY_IMAGE"
       - echo "Building the app"
-      environment:
-        name: build
-        url: http://CitharaBuild
     artifacts:
         paths:
         - public
