@@ -23,6 +23,7 @@ build:
   
 deploy:
     image: docker:latest
+    stage: deploy
     script:
         - mkdir public
         - mv website/* public
