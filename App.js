@@ -1,13 +1,10 @@
 import React from 'react';
-import { Text} from 'react-native';
+import Test from "./components/test"
 
 const App = () => {
   return (
-    <>
-      <Text>bbbbbbbb</Text>
-      <Text>cccccccc</Text>
-    </>
+    <Test />
   );
-};
+}
 
 export default App;
