@@ -13,7 +13,8 @@
     "install-peerdeps": "^2.0.3",
     "native-base": "^2.13.14",
     "react": "16.13.1",
-    "react-native": "0.63.3"
+    "react-native": "0.63.3",
+    "react-native-mmkv-storage": "^0.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
