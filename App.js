@@ -1,23 +1,41 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import MainHomePage from "./components/HomePage/mainHomePage"
+import "react-native-gesture-handler";
 
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import { AuthProvider } from "./providers/AuthProvider";
+
+import { LogIn } from "./components/LogIn";
+import MainHomePage from "./components/HomePage/MainHomePage";
+import AddPractice from "./components/AddPractice"
+
+<script src="http://localhost:8097"></script>
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.app}>
-      <MainHomePage/>
-    </SafeAreaView>
-        
+    <AuthProvider>
+      <NavigationContainer>
+        <Stack.Navigator 
+          initialRouteName='Log In'>
+          <Stack.Screen
+            name="Log In"
+            component={LogIn}
+          />
+          <Stack.Screen
+            name="MainHomePage"
+            component={MainHomePage}
+          />
+          <Stack.Screen
+            name="AddPractice"
+            component={AddPractice}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthProvider>
   );
-}
-
-const styles = StyleSheet.create({
-  app: {
-    flex: 1,
-    marginTop: 50,
-    marginBottom: 50,
-  }
-});
+};
 
 export default App;

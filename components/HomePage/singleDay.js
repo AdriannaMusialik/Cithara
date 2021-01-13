@@ -1,16 +1,20 @@
 import React from 'react';
-import {View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import {View, Text, StyleSheet, Button } from 'react-native';
 
 const SingleDay = ({day, date}) => {
+
   let singleDate = new Date(date).getDay();
   let todaysDate = new Date().getDay()
+
+  const navigation = useNavigation();
 
   return (
     
         <View style={singleDate  === todaysDate ? styles.singleDayRed : styles.singleDay}>
         { singleDate  === todaysDate
           ?
-           <Text>Get Practice</Text>
+           <Button title="Add Practice" onPress={() => navigation.navigate("AddPractice")}></Button>
           :
             <>
               <View style={styles.row}>

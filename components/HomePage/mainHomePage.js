@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+
 import SingleDay from './singleDay';
+import Logout from "../Logout"
 
 const MainHomePage = () => {
   
@@ -26,8 +28,10 @@ const MainHomePage = () => {
   return (
     <>
       <View style={styles.weekDetails}>
-        {weekDetails.map(day => <SingleDay day={day.dayName} date={day.date} key={day.id}/>)}
+        {weekDetails.map(day => <SingleDay day={day.dayName} date={day.date} key={day.id} />)}
+        <Logout />
       </View>
+
       
     </>
   );
