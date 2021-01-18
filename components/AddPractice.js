@@ -7,8 +7,6 @@ export default class AddPractice extends Component {
     language: "",
   };
 
-
-
   render() {
     return (
       <View>

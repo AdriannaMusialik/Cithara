@@ -31,8 +31,6 @@ const MainHomePage = () => {
         {weekDetails.map(day => <SingleDay day={day.dayName} date={day.date} key={day.id} />)}
         <Logout />
       </View>
-
-      
     </>
   );
 }

@@ -3,7 +3,7 @@ import { Button, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../providers/AuthProvider";
 
-export function Logout() {
+export default function Logout() {
   const navigation = useNavigation();
   const { signOut } = useAuth();
 

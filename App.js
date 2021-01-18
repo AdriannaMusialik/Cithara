@@ -19,9 +19,9 @@ const App = () => {
     <AuthProvider>
       <NavigationContainer>
         <Stack.Navigator 
-          initialRouteName='Log In'>
+          initialRouteName='LogIn'>
           <Stack.Screen
-            name="Log In"
+            name="LogIn"
             component={LogIn}
           />
           <Stack.Screen
