@@ -8,7 +8,7 @@ import { AuthProvider } from "./providers/AuthProvider";
 
 import { LogIn } from "./components/LogIn";
 import MainHomePage from "./components/HomePage/MainHomePage";
-import AddPractice from "./components/AddPractice"
+import AddPractice from "./components/AddPractice/AddPractice"
 
 <script src="http://localhost:8097"></script>
 
