@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import {Form, Picker} from 'native-base';
 
 export default class TreningPicker extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          selected: undefined
-        };
-      }
-      onValueChange(value) {
-        this.setState({
-          selected: value
-        });
-      }
 
     render () {
         return (
@@ -22,8 +11,8 @@ export default class TreningPicker extends Component {
                     placeholder="Select One"
                     placeholderStyle={{ color: "#2874F0" }}
                     note={false}
-                    selectedValue={this.state.selected}
-                    onValueChange={this.onValueChange.bind(this)}
+                    selectedValue={this.props.selected}
+                    onValueChange={this.props.onValueChange()}
                 >
                     <Picker.Item label="Trening1" value="key0" />
                     <Picker.Item label="Trening2" value="key1" />
