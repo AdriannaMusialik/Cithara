@@ -10,7 +10,7 @@ export function LogIn () {
   const [password, setPassword] = useState("");
   const { user, signUp, signIn } = useAuth();
 
-      const navigation = useNavigation();
+  const navigation = useNavigation();
 
   useEffect(() => {
     // If there is a user logged in, go to the Projects page.

@@ -26,7 +26,6 @@ export default class AddPractice extends Component {
             <>
               <Stopwatch1 />
               <Timer1 />
-              <Text>{this.state.selected}</Text>
             </>
           }
       </Container>

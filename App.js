@@ -8,7 +8,9 @@ import { AuthProvider } from "./providers/AuthProvider";
 
 import { LogIn } from "./components/LogIn";
 import MainHomePage from "./components/HomePage/MainHomePage";
+import MainCalendarPage from "./components/CalendarPage/MainCalendarPage";
 import AddPractice from "./components/AddPractice/AddPractice"
+
 
 <script src="http://localhost:8097"></script>
 
@@ -21,7 +23,7 @@ const App = () => {
         <Stack.Navigator 
           initialRouteName='LogIn'>
           <Stack.Screen
-            name="LogIn"
+            name="Log In"
             component={LogIn}
           />
           <Stack.Screen
@@ -29,7 +31,11 @@ const App = () => {
             component={MainHomePage}
           />
           <Stack.Screen
-            name="AddPractice"
+            name="MainCalendarPage"
+            component={MainCalendarPage}
+          />
+          <Stack.Screen
+            name="Add Practice"
             component={AddPractice}
           />
         </Stack.Navigator>
