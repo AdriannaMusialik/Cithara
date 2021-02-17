@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {View, Text, StyleSheet, Button } from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import { Button, Text } from 'native-base';
 
 const SingleDay = ({day, date}) => {
 
@@ -14,14 +15,26 @@ const SingleDay = ({day, date}) => {
         <View style={singleDate  === todaysDate ? styles.singleDayRed : styles.singleDay}>
         { singleDate  === todaysDate
           ?
-           <Button title="Add Practice" onPress={() => navigation.navigate("AddPractice")}></Button>
+            <>
+              <View style={styles.row}>
+                <Text>{date}</Text>
+                <Text style={styles.day}>{day}</Text>
+              </View>
+              <View style={styles.row}>
+                <Button rounded success onPress={() => navigation.navigate("AddPractice")} date={date} day={day}>
+                  <Text>+</Text>
+                </Button>
+              </View>
+            </>
           :
             <>
               <View style={styles.row}>
-                <Text style={styles.day}>{day}</Text>
+                <Text>Title</Text>
                 <Text>{date}</Text>
+                <Text style={styles.day}>{day}</Text>
               </View>
               <View style={styles.row}>
+                <Text>Starting time</Text>
                 <Text>Number of exercises</Text>
                 <Text>Time of exercises </Text>  
               </View>

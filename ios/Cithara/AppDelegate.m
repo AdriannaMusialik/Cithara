@@ -12,6 +12,11 @@
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 
+#import <Firebase.h>
+
+#import UIKit;
+#import Firebase;
+
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
   SKDescriptorMapper *layoutDescriptorMapper = [[SKDescriptorMapper alloc] initWithDefaults];
@@ -23,10 +28,16 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
+
+
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [FIRApp configure];
+  return YES;
+}
+  
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif

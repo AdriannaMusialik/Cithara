@@ -1,9 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-
 import SingleDay from './SingleDay';
-import Logout from "../Logout"
-
 
 export default MainCalendarPage = () => {
   
@@ -29,7 +26,7 @@ export default MainCalendarPage = () => {
   return (
     <View style={styles.weekDetails}>
       {weekDetails.map(day => <SingleDay day={day.dayName} date={day.date} key={day.id} />)}
-      <Logout />
+      
     </View>
 
   );
