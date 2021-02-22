@@ -3,13 +3,12 @@ import { Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-nativ
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import auth from "@react-native-firebase/auth"
 
-
-export default function LogIn({navigation}) {
+export default function LogIn ({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const onFooterLinkPress = () => {
-        navigation.navigate('Registration')
+    const onFooterLinkPress = (screenName) => {
+        navigation.navigate(screenName)
     }
 
     const onLoginPress = () => {
@@ -53,7 +52,10 @@ export default function LogIn({navigation}) {
                     <Text style={styles.buttonTitle}>Log in</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
-                    <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
+                    <Text onPress={() => onFooterLinkPress("ForgotPassword")} style={styles.footerLink}>Forgot password</Text>
+                </View>
+                <View style={styles.footerView}>
+                    <Text style={styles.footerText}>Don't have an account? <Text onPress={() => onFooterLinkPress("Registration")} style={styles.footerLink}>Sign up</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
         </View>

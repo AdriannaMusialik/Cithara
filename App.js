@@ -5,12 +5,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import LogIn from "./components/Authentication/LogIn";
+import ForgotPassword from "./components/Authentication/ForgotPassword";
 import Registration from "./components/Authentication/Registration";
 import MainHomePage  from "./components/HomePage/MainHomePage";
 import MainCalendarPage from "./components/CalendarPage/MainCalendarPage";
 import AddPractice from "./components/AddPractice/AddPractice";
 import DictionaryMainPage from "./components/PracticePlayDictionary/DictionaryMainPage";
-import DictionaryAddPractice from "./components/PracticePlayDictionary/DictionaryAddPractice"
+import DictionaryAddPractice from "./components/PracticePlayDictionary/DictionaryAddPractice";
 
 <script src="http://localhost:8097"></script>
 
@@ -24,6 +25,10 @@ const App = () => {
           <Stack.Screen 
             name="LogIn" 
             component={LogIn} 
+          />
+          <Stack.Screen 
+            name="ForgotPassword" 
+            component={ForgotPassword} 
           />
           <Stack.Screen 
             name="Registration" 

@@ -6,15 +6,15 @@ import auth from '@react-native-firebase/auth';
 
 export default function LogOut () {
 
-const navigation = useNavigation();
+    const navigation = useNavigation();
 
-const onLogOutPress = () => {
-    auth()
-    .signOut()
-    .then(() => {
-        navigation.navigate('LogIn')
-    })
-}
+    const onLogOutPress = () => {
+        auth()
+        .signOut()
+        .then(() => {
+            navigation.navigate('LogIn')
+        })
+    }
 
     return (
         <Button onPress={onLogOutPress}>
