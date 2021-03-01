@@ -22,38 +22,39 @@ const App = () => {
   return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen 
-            name="LogIn" 
-            component={LogIn} 
-          />
-          <Stack.Screen 
-            name="ForgotPassword" 
-            component={ForgotPassword} 
-          />
-          <Stack.Screen 
-            name="Registration" 
-            component={Registration} 
-          />
-          <Stack.Screen 
-            name="MainHomePage" 
-            component={MainHomePage}
-          />
-          <Stack.Screen
-            name="MainCalendarPage"
-            component={MainCalendarPage}
-          />
-          <Stack.Screen
-            name="AddPractice"
-            component={AddPractice}
-          />
-           <Stack.Screen
-            name="DictionaryMainPage"
-            component={DictionaryMainPage}
-          />
-           <Stack.Screen
-            name="DictionaryAddPractice"
-            component={DictionaryAddPractice}
-          />
+            <Stack.Screen 
+              name="LogIn" 
+              component={LogIn} 
+            />
+            <Stack.Screen 
+              name="ForgotPassword" 
+              component={ForgotPassword} 
+            />
+            <Stack.Screen 
+              name="Registration" 
+              component={Registration} 
+            /> 
+
+            <Stack.Screen 
+              name="MainHomePage" 
+              component={MainHomePage}
+            />
+            <Stack.Screen
+              name="MainCalendarPage"
+              component={MainCalendarPage}
+            />
+            <Stack.Screen
+              name="AddPractice"
+              component={AddPractice}
+            />
+            <Stack.Screen
+              name="DictionaryMainPage"
+              component={DictionaryMainPage}
+            />
+            <Stack.Screen
+              name="DictionaryAddPractice"
+              component={DictionaryAddPractice}
+            /> 
 
         </Stack.Navigator>
       </NavigationContainer>
